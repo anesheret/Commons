@@ -7,3 +7,14 @@
 //
 
 #include <iostream>
+#include <StopWatch.h>
+
+void test();
+
+void test()
+{
+  StopWatch s;
+  s.start();
+  usleep( 1500 );
+  std::cout << "test: " << s.seconds() << std::endl;
+}

@@ -7,16 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4920C6781401048D0076531F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4920C6771401048D0076531F /* Foundation.framework */; };
-		4920C67E1401048D0076531F /* Commons.m in Sources */ = {isa = PBXBuildFile; fileRef = 4920C67D1401048D0076531F /* Commons.m */; };
+		4920C68E140113B00076531F /* Commons-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 4920C68D140113B00076531F /* Commons-Prefix.pch */; };
+		4920C691140115020076531F /* StopWatch.h in Headers */ = {isa = PBXBuildFile; fileRef = 4920C690140115020076531F /* StopWatch.h */; };
+		4920C694140115700076531F /* Tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4920C693140115700076531F /* Tests.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4920C6741401048D0076531F /* libCommons.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCommons.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		4920C6771401048D0076531F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		4920C67B1401048D0076531F /* Commons-Prefix.pch */ = {isa = PBXFileReference; path = "Commons-Prefix.pch"; sourceTree = "<group>"; };
-		4920C67C1401048D0076531F /* Commons.h */ = {isa = PBXFileReference; path = Commons.h; sourceTree = "<group>"; };
-		4920C67D1401048D0076531F /* Commons.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Commons.m; sourceTree = "<group>"; };
+		4920C68D140113B00076531F /* Commons-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Commons-Prefix.pch"; sourceTree = "<group>"; };
+		4920C690140115020076531F /* StopWatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StopWatch.h; path = Headers/StopWatch.h; sourceTree = "<group>"; };
+		4920C693140115700076531F /* Tests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tests.cpp; path = Sources/Tests.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -24,7 +24,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4920C6781401048D0076531F /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -34,7 +33,9 @@
 		4920C6691401048D0076531F = {
 			isa = PBXGroup;
 			children = (
-				4920C6791401048D0076531F /* Commons */,
+				4920C68F140114AB0076531F /* Headers */,
+				4920C692140115190076531F /* Sources */,
+				4920C68C140113B00076531F /* Supporting */,
 				4920C6761401048D0076531F /* Frameworks */,
 				4920C6751401048D0076531F /* Products */,
 			);
@@ -51,27 +52,32 @@
 		4920C6761401048D0076531F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4920C6771401048D0076531F /* Foundation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		4920C6791401048D0076531F /* Commons */ = {
+		4920C68C140113B00076531F /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
-				4920C67C1401048D0076531F /* Commons.h */,
-				4920C67D1401048D0076531F /* Commons.m */,
-				4920C67A1401048D0076531F /* Supporting Files */,
+				4920C68D140113B00076531F /* Commons-Prefix.pch */,
 			);
-			path = Commons;
+			path = Supporting;
 			sourceTree = "<group>";
 		};
-		4920C67A1401048D0076531F /* Supporting Files */ = {
+		4920C68F140114AB0076531F /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				4920C67B1401048D0076531F /* Commons-Prefix.pch */,
+				4920C690140115020076531F /* StopWatch.h */,
 			);
-			name = "Supporting Files";
+			name = Headers;
+			sourceTree = "<group>";
+		};
+		4920C692140115190076531F /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				4920C693140115700076531F /* Tests.cpp */,
+			);
+			name = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -81,6 +87,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4920C68E140113B00076531F /* Commons-Prefix.pch in Headers */,
+				4920C691140115020076531F /* StopWatch.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,7 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4920C67E1401048D0076531F /* Commons.m in Sources */,
+				4920C694140115700076531F /* Tests.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,10 +163,11 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "Headers/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				SDKROOT = iphoneos;
 			};
@@ -171,10 +180,11 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "Headers/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -186,7 +196,7 @@
 			buildSettings = {
 				DSTROOT = /tmp/Commons.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Commons/Commons-Prefix.pch";
+				GCC_PREFIX_HEADER = "Supporting/Commons-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -198,7 +208,7 @@
 			buildSettings = {
 				DSTROOT = /tmp/Commons.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Commons/Commons-Prefix.pch";
+				GCC_PREFIX_HEADER = "Supporting/Commons-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -224,6 +234,7 @@
 				4920C6831401048D0076531F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
