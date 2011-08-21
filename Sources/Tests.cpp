@@ -16,5 +16,5 @@ void test()
   StopWatch s;
   s.start();
   usleep( 1500 );
-  std::cout << "test: " << s.seconds() << std::endl;
+  std::cout << "test: " << s.stop().seconds() << std::endl;
 }
