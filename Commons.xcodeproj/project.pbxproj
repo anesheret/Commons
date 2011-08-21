@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4920C68E140113B00076531F /* Commons-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 4920C68D140113B00076531F /* Commons-Prefix.pch */; };
 		4920C691140115020076531F /* StopWatch.h in Headers */ = {isa = PBXBuildFile; fileRef = 4920C690140115020076531F /* StopWatch.h */; };
 		4920C694140115700076531F /* Tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4920C693140115700076531F /* Tests.cpp */; };
 /* End PBXBuildFile section */
@@ -87,7 +86,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4920C68E140113B00076531F /* Commons-Prefix.pch in Headers */,
 				4920C691140115020076531F /* StopWatch.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -167,7 +165,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "Headers/**";
+				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				SDKROOT = iphoneos;
 			};
@@ -184,7 +182,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "Headers/**";
+				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
