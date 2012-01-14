@@ -6,20 +6,62 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		49E8799B14B20DE00065B140 /* Commons */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 49E8799C14B20DE00065B140 /* Build configuration list for PBXAggregateTarget "Commons" */;
+			buildPhases = (
+			);
+			dependencies = (
+				49E879A214B20DEE0065B140 /* PBXTargetDependency */,
+				49E879A014B20DEE0065B140 /* PBXTargetDependency */,
+			);
+			name = Commons;
+			productName = Commons;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
-		4920C691140115020076531F /* StopWatch.h in Headers */ = {isa = PBXBuildFile; fileRef = 4920C690140115020076531F /* StopWatch.h */; };
-		4920C694140115700076531F /* Tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4920C693140115700076531F /* Tests.cpp */; };
+		499106321404CE50003BE508 /* StopWatch.cc in Sources */ = {isa = PBXBuildFile; fileRef = 499106311404CE50003BE508 /* StopWatch.cc */; };
+		499106351404CE84003BE508 /* StopWatch.h in Headers */ = {isa = PBXBuildFile; fileRef = 499106331404CE5A003BE508 /* StopWatch.h */; };
+		49E879A314B20E110065B140 /* StopWatch.cc in Sources */ = {isa = PBXBuildFile; fileRef = 499106311404CE50003BE508 /* StopWatch.cc */; };
+		49E879A414B20E7F0065B140 /* StopWatch.h in Headers */ = {isa = PBXBuildFile; fileRef = 499106331404CE5A003BE508 /* StopWatch.h */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		49E8799F14B20DEE0065B140 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4920C66B1401048D0076531F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4920C6731401048D0076531F;
+			remoteInfo = "Commons - IOS";
+		};
+		49E879A114B20DEE0065B140 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4920C66B1401048D0076531F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 49E8799614B202E60065B140;
+			remoteInfo = "Commons - OSX";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		4920C6741401048D0076531F /* libCommons.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCommons.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4920C6741401048D0076531F /* libCommons - IOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libCommons - IOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4920C68D140113B00076531F /* Commons-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Commons-Prefix.pch"; sourceTree = "<group>"; };
-		4920C690140115020076531F /* StopWatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StopWatch.h; path = Headers/StopWatch.h; sourceTree = "<group>"; };
-		4920C693140115700076531F /* Tests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tests.cpp; path = Sources/Tests.cpp; sourceTree = "<group>"; };
+		499106311404CE50003BE508 /* StopWatch.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StopWatch.cc; sourceTree = "<group>"; };
+		499106331404CE5A003BE508 /* StopWatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopWatch.h; sourceTree = "<group>"; };
+		49E8799714B202E60065B140 /* libCommons - OSX.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libCommons - OSX.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		4920C6711401048D0076531F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		49E8799414B202E60065B140 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -43,7 +85,8 @@
 		4920C6751401048D0076531F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4920C6741401048D0076531F /* libCommons.a */,
+				4920C6741401048D0076531F /* libCommons - IOS.a */,
+				49E8799714B202E60065B140 /* libCommons - OSX.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -66,17 +109,17 @@
 		4920C68F140114AB0076531F /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				4920C690140115020076531F /* StopWatch.h */,
+				499106331404CE5A003BE508 /* StopWatch.h */,
 			);
-			name = Headers;
+			path = Headers;
 			sourceTree = "<group>";
 		};
 		4920C692140115190076531F /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				4920C693140115700076531F /* Tests.cpp */,
+				499106311404CE50003BE508 /* StopWatch.cc */,
 			);
-			name = Sources;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -86,16 +129,24 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4920C691140115020076531F /* StopWatch.h in Headers */,
+				499106351404CE84003BE508 /* StopWatch.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		49E8799514B202E60065B140 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49E879A414B20E7F0065B140 /* StopWatch.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		4920C6731401048D0076531F /* Commons */ = {
+		4920C6731401048D0076531F /* Commons - IOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4920C6811401048D0076531F /* Build configuration list for PBXNativeTarget "Commons" */;
+			buildConfigurationList = 4920C6811401048D0076531F /* Build configuration list for PBXNativeTarget "Commons - IOS" */;
 			buildPhases = (
 				4920C6701401048D0076531F /* Sources */,
 				4920C6711401048D0076531F /* Frameworks */,
@@ -105,9 +156,26 @@
 			);
 			dependencies = (
 			);
-			name = Commons;
+			name = "Commons - IOS";
 			productName = Commons;
-			productReference = 4920C6741401048D0076531F /* libCommons.a */;
+			productReference = 4920C6741401048D0076531F /* libCommons - IOS.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		49E8799614B202E60065B140 /* Commons - OSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 49E8799814B202E60065B140 /* Build configuration list for PBXNativeTarget "Commons - OSX" */;
+			buildPhases = (
+				49E8799314B202E60065B140 /* Sources */,
+				49E8799414B202E60065B140 /* Frameworks */,
+				49E8799514B202E60065B140 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Commons - OSX";
+			productName = "Commons-osx";
+			productReference = 49E8799714B202E60065B140 /* libCommons - OSX.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -116,6 +184,7 @@
 		4920C66B1401048D0076531F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastUpgradeCheck = 0420;
 				ORGANIZATIONNAME = "InfiNet Wireless Ltd.";
 			};
 			buildConfigurationList = 4920C66E1401048D0076531F /* Build configuration list for PBXProject "Commons" */;
@@ -130,7 +199,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4920C6731401048D0076531F /* Commons */,
+				49E8799614B202E60065B140 /* Commons - OSX */,
+				4920C6731401048D0076531F /* Commons - IOS */,
+				49E8799B14B20DE00065B140 /* Commons */,
 			);
 		};
 /* End PBXProject section */
@@ -140,11 +211,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4920C694140115700076531F /* Tests.cpp in Sources */,
+				499106321404CE50003BE508 /* StopWatch.cc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		49E8799314B202E60065B140 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49E879A314B20E110065B140 /* StopWatch.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		49E879A014B20DEE0065B140 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4920C6731401048D0076531F /* Commons - IOS */;
+			targetProxy = 49E8799F14B20DEE0065B140 /* PBXContainerItemProxy */;
+		};
+		49E879A214B20DEE0065B140 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 49E8799614B202E60065B140 /* Commons - OSX */;
+			targetProxy = 49E879A114B20DEE0065B140 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		4920C67F1401048D0076531F /* Debug */ = {
@@ -152,8 +244,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LIBRARY = "libc++";
 				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -166,8 +258,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -176,15 +268,15 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LIBRARY = "libc++";
 				COPY_PHASE_STRIP = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -195,6 +287,7 @@
 				DSTROOT = /tmp/Commons.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Supporting/Commons-Prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -207,9 +300,58 @@
 				DSTROOT = /tmp/Commons.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Supporting/Commons-Prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		49E8799914B202E60065B140 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				EXECUTABLE_PREFIX = lib;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Supporting/Commons-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		49E8799A14B202E60065B140 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EXECUTABLE_PREFIX = lib;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Supporting/Commons-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		49E8799D14B20DE00065B140 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		49E8799E14B20DE00065B140 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -225,11 +367,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4920C6811401048D0076531F /* Build configuration list for PBXNativeTarget "Commons" */ = {
+		4920C6811401048D0076531F /* Build configuration list for PBXNativeTarget "Commons - IOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4920C6821401048D0076531F /* Debug */,
 				4920C6831401048D0076531F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		49E8799814B202E60065B140 /* Build configuration list for PBXNativeTarget "Commons - OSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49E8799914B202E60065B140 /* Debug */,
+				49E8799A14B202E60065B140 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		49E8799C14B20DE00065B140 /* Build configuration list for PBXAggregateTarget "Commons" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49E8799D14B20DE00065B140 /* Debug */,
+				49E8799E14B20DE00065B140 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
