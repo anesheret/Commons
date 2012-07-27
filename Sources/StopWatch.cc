@@ -1,7 +1,7 @@
 //  Created by Andrey Neshcheret on 22.08.11.
 //  Copyright 2011 InfiNet Wireless Ltd. All rights reserved.
 //
-#include <StopWatch.h>
+#include <Commons/StopWatch.h>
 
 namespace Commons 
 {
