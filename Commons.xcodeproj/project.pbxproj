@@ -22,7 +22,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		4927285E1655226E0025CFE8 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4927285D1655226E0025CFE8 /* main.cpp */; };
+		4927285E1655226E0025CFE8 /* main.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4927285D1655226E0025CFE8 /* main.cc */; };
 		49272864165522F60025CFE8 /* libCommons - OSX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49E8799714B202E60065B140 /* libCommons - OSX.a */; };
 		497577A614C216B200AA3E90 /* StopWatch.h in Headers */ = {isa = PBXBuildFile; fileRef = 497577A414C216B200AA3E90 /* StopWatch.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		497577A714C216B200AA3E90 /* StopWatch.h in Headers */ = {isa = PBXBuildFile; fileRef = 497577A414C216B200AA3E90 /* StopWatch.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -70,7 +70,7 @@
 		4920C6741401048D0076531F /* libCommons - IOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libCommons - IOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4920C68D140113B00076531F /* Commons-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Commons-Prefix.pch"; sourceTree = "<group>"; };
 		4927285A1655226E0025CFE8 /* Tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Tests; sourceTree = BUILT_PRODUCTS_DIR; };
-		4927285D1655226E0025CFE8 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		4927285D1655226E0025CFE8 /* main.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cc; sourceTree = "<group>"; };
 		497577A414C216B200AA3E90 /* StopWatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopWatch.h; sourceTree = "<group>"; };
 		499106311404CE50003BE508 /* StopWatch.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StopWatch.cc; sourceTree = "<group>"; };
 		49E8799714B202E60065B140 /* libCommons - OSX.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libCommons - OSX.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,7 +158,7 @@
 		4927285C1655226E0025CFE8 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				4927285D1655226E0025CFE8 /* main.cpp */,
+				4927285D1655226E0025CFE8 /* main.cc */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -287,7 +287,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4927285E1655226E0025CFE8 /* main.cpp in Sources */,
+				4927285E1655226E0025CFE8 /* main.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
