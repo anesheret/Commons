@@ -45,7 +45,7 @@ public:
 
   double usecs() const { return double( nanos() ) / 1000; }
   double msecs() const { return double( nanos() ) / ( 1000 * 1000 ); }
-  double seconds() const { return double( nanos() )/ ( 1000 * 1000 * 1000 ); }
+  double seconds() const { return double( nanos() ) / ( 1000 * 1000 * 1000 ); }
 
 private:
   static mach_timebase_info_data_t & info();
