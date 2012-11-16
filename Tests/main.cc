@@ -15,7 +15,9 @@ using namespace std;
 int main( int argc, const char * argv[])
 {
   Commons::StopWatch s;
-  cout << "total: " << setprecision(2) << s.stop().msecs() << " mec."<< endl;
+  s.start();
+  double msec = s.stop().msecs();
+  cout << "total: " << setprecision(2) << msec << " mec."<< endl;
   return 0;
 }
 
