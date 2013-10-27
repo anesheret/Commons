@@ -1,59 +1,205 @@
 //  Created by Andrey Neshcheret on 13.08.11.
-//  Copyright 2011 A. Nesheret. All rights reserved.
+//  Copyright (c) 2012 Andrey Neshcheret. All rights reserved.
 
-#ifndef StopWatch_h
-#define StopWatch_h
+#if !defined( __StopWatch_h__ )
+#define __StopWatch_h__
 
-#include <mach/mach_time.h>
-#include <stdio.h>
+#include <chrono>
+#include <string>
+#include <assert.h>
+#include <sstream>
+#include <iomanip>
+#include <type_traits>
+
 
 namespace Commons
 {
+  using namespace std;
   
-class StopWatch
-{
-public:
-  StopWatch()
+  namespace TimeUnit
   {
-    start();
-  }
+    enum Unit
+    {
+      NANOSECONDS,
+      MICROSECONDS,
+      MILLISECONDS,
+      SECONDS,
+      MINUTES,
+      HOURS,
+      DAYS,
+      WEEKS
+    };
 
-  StopWatch( const StopWatch & other )
-  {
-    this->startTime = other.startTime;
-    this->stopTime = other.stopTime;
+    string abbreviate( Unit unit );
+
+    template< class duration >
+    Unit choice( duration d, Unit upTo = SECONDS )
+    {
+      if ( upTo >= WEEKS && chrono::duration_cast< chrono::duration< long, ratio< 60 * 60 * 24 * 7> > >( d ).count() > 0 ) return HOURS;
+      if ( upTo >= DAYS && chrono::duration_cast< chrono::duration< long, ratio< 60 * 60 * 24 > > >( d ).count() > 0 ) return HOURS;
+      if ( upTo >= HOURS && chrono::duration_cast< chrono::hours >( d ).count() > 0 ) return HOURS;
+      if ( upTo >= SECONDS && chrono::duration_cast< chrono::seconds >( d ).count() > 0 ) return SECONDS;
+      if ( upTo >= MILLISECONDS && chrono::duration_cast< chrono::milliseconds >( d ).count() > 0 ) return MILLISECONDS;
+      if ( upTo >= MICROSECONDS && chrono::duration_cast< chrono::microseconds >( d ).count() > 0 ) return MICROSECONDS;
+      return NANOSECONDS;
+    }
+
+    template< class duration >
+    string toString( duration d )
+    {
+      return toString( d, choice( d, SECONDS ) );
+    }
+
+    template< class duration >
+    string toString( duration d, Unit unit )
+    {
+      double value;
+      switch ( unit )
+      {
+        case NANOSECONDS:
+          value = chrono::duration_cast< chrono::nanoseconds >( d ).count();
+          break;
+        case MICROSECONDS:
+          value = chrono::duration_cast< chrono::duration< float, micro > >( d ).count();
+          break;
+        case MILLISECONDS:
+          value = chrono::duration_cast< chrono::duration< float, milli > >( d ).count();
+          break;
+        case SECONDS:
+          value = chrono::duration_cast< chrono::duration< float > >( d ).count();
+          break;
+        case MINUTES:
+          value = chrono::duration_cast< chrono::duration< float, ratio< 60, 1 > > >( d ).count();
+          break;
+        case HOURS:
+          value = chrono::duration_cast< chrono::duration< float, ratio< 60 * 60, 1 > > >( d ).count();
+          break;
+        case DAYS:
+          value = chrono::duration_cast< chrono::duration< float, ratio< 60 * 60 * 24, 1 > > >( d ).count();
+          break;
+        case WEEKS:
+          value = chrono::duration_cast< chrono::duration< float, ratio< 60 * 60 * 24 * 7, 1 > > >( d ).count();
+          break;
+        default:
+          assert( false );
+      }
+      stringstream os;
+      os << std::fixed << setprecision( 3 ) << value << ' ' << TimeUnit::abbreviate( unit );
+      return os.str();
+    }
   }
   
-  void start()
+  class StopWatch
   {
-    startTime = mach_absolute_time();
-  }
+    typedef chrono::high_resolution_clock clock;
+    typedef clock::duration duration;
 
-  const StopWatch & stop()
-  {
-    stopTime = mach_absolute_time();
-    return *this;
-  }
+  public:
+    StopWatch()
+    {
+      reset();
+    }
 
-  uint64_t nanos() const
-  {
-    uint64_t result = stopTime - startTime;
-    result *= StopWatch::info().numer;
-    result /= StopWatch::info().denom;
-    return result;
-  }
+    StopWatch( const StopWatch & other )
+    {
+      operator = ( other );
+    }
+    
+    StopWatch & operator = ( const StopWatch & other )
+    {
+      started = other.started;
+      startTime = other.startTime;
+      elapsed = other.elapsed;
+      return *this;
+    }
+    
+    void reset()
+    {
+      started = false;
+      elapsed = clock::duration::zero();
+    }
+    
+    StopWatch & start()
+    {
+      assert( !isRunning() );
+      started = true;
+      startTime = clock::now();
+      return *this;
+    }
+    
+    StopWatch & stop()
+    {
+      assert( isRunning() );
+      started = false;
+      elapsed += clock::now() - startTime;
+      return *this;
+    }
+    
+    bool isRunning() const { return started; }
+    
+    clock::duration elapsedTime() const
+    {
+      return isRunning() ? clock::now() - startTime + elapsed : elapsed;
+    }
+    
+    chrono::nanoseconds nanos() const
+    {
+      return chrono::duration_cast< chrono::nanoseconds >( elapsedTime() );
+    }
+    
+    chrono::milliseconds msec() const
+    {
+      return chrono::duration_cast< chrono::milliseconds >( elapsedTime() );
+    }
+    
+    operator string () const
+    {
+      return toString();
+    }
 
-  double usecs() const { return double( nanos() ) / 1000; }
-  double msecs() const { return double( nanos() ) / ( 1000 * 1000 ); }
-  double seconds() const { return double( nanos() ) / ( 1000 * 1000 * 1000 ); }
+    string toString() const
+    {
+      return toString( TimeUnit::choice( elapsedTime() ) );
+    }
+    
+    string toString( TimeUnit::Unit unit ) const
+    {
+      return TimeUnit::toString( elapsedTime(), unit );
+    }
 
-private:
-  static mach_timebase_info_data_t & info();
+  private:
+    bool started;
+    chrono::time_point< clock > startTime;
+    duration elapsed;
 
-private:
-  uint64_t startTime;
-  uint64_t stopTime;
-};
+  public:
+    friend inline std::ostream & operator << ( std::ostream & os, const StopWatch & s )
+    {
+      os << s.toString();
+      return os;
+    }
 
+    friend inline duration operator - ( const StopWatch & l, const StopWatch & r )
+    {
+      return l.elapsedTime() - r.elapsedTime();
+    }
+
+    friend inline duration operator + ( const StopWatch & l, const StopWatch & r )
+    {
+      return l.elapsedTime() + r.elapsedTime();
+    }
+  };
 }
+
+template< class stream, class duration >
+inline
+typename std::enable_if<
+  std::chrono::__is_duration< duration >::value,
+  stream >::type &
+operator << ( stream & os, const duration & d )
+{
+  os << Commons::TimeUnit::toString( d );
+  return os;
+}
+
 #endif

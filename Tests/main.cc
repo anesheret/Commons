@@ -1,10 +1,5 @@
-//
-//  main.cpp
-//  Tests
-//
 //  Created by Andrey Neshcheret on 15.11.12.
 //  Copyright (c) 2012 Andrey Neshcheret. All rights reserved.
-//
 
 #include <iostream>
 #include <iomanip>
@@ -12,38 +7,53 @@
 #include <unistd.h>
 #include <chrono>
 #include <vector>
-
+#include <list>
+#include <mutex>
+#include <thread>
+#include <utility>
+#include <memory>
 
 using namespace std;
+using Commons::StopWatch;
 
-void t();
 
 void t()
 {
-  cout << "SYSTEM Period: " << std::chrono::system_clock::period::den << endl;
-  cout << "Hi Period: " << std::chrono::high_resolution_clock::period::den << endl;
-  for (unsigned long long size = 1; size < 10000000; size *= 10)
+  Commons::StopWatch total;
+
+  std::vector<int> v( 1, 42 );
+  std::list<int> l( 1, 42 );
+
+  total.start();
+  for ( unsigned long long size = 1; size < 1 * 1000 * 1000 * 1000; size *= 10 )
   {
-    auto start = std::chrono::high_resolution_clock::now();
     Commons::StopWatch s;
-    std::vector<int> v(size, 42);
+    StopWatch s1;
+
+    s.start();
+    std::vector<int> v( size, 42 );
     s.stop();
-    auto end = std::chrono::high_resolution_clock::now();
-    
-    auto elapsed = end - start;
-    std::cout << size << ": " << elapsed.count() << '\n';
-    cout << size << ": " << std::fixed << setprecision(0) << s.stop().nanos() << " nano."<< endl;
+
+    s1.start();
+    std::list<int> l( 1, 42 );
+    s1.stop();
+    std::cout << setw( 15 ) << total.toString() << ": " << size << ": " << s << ", " << s1 << endl;
   }
+  cout<< "Total:" << total.stop() << endl;
 }
 
-int main( int argc, const char * argv[])
+using namespace Commons::TimeUnit;
+
+int main( int argc, const char * argv[] )
 {
+  std::cout << Commons::TimeUnit::toString(chrono::seconds( 60 + 30 ), Commons::TimeUnit::MINUTES ) << endl;
+  std::cout << chrono::milliseconds( (60 + 30 + 3) * 1000 + 44) << endl;
+  t();
   Commons::StopWatch s;
   s.start();
-  usleep( 25 * 1000 );
+  std::this_thread::sleep_for( chrono::milliseconds( 1515 ) );
   s.stop();
-  cout << "total: " << std::fixed << setprecision(3) << s.stop().seconds() << " sec."<< endl;
-  t();
+  cout << "total: " << std::fixed << setprecision(3) << s.elapsedTime().count() << " nano."<< endl;
+  cout << "     : " << s << ", " << s + s << endl;
   return 0;
 }
-

@@ -3,15 +3,34 @@
 //
 #include <Commons/StopWatch.h>
 
+
 namespace Commons 
 {
-
-mach_timebase_info_data_t & StopWatch::info()
-{
-  static mach_timebase_info_data_t info;
-  if ( info.denom == 0 )
-    mach_timebase_info( &info );
-  return info;
-}
-
+  namespace TimeUnit
+  {
+    string abbreviate( Unit unit )
+    {
+      switch ( unit )
+      {
+        case NANOSECONDS:
+          return "ns";
+        case MICROSECONDS:
+          return "us"; //"\u03bcs"; // μs
+        case MILLISECONDS:
+          return "ms";
+        case SECONDS:
+          return "s";
+        case MINUTES:
+          return "m";
+        case HOURS:
+          return "h";
+        case DAYS:
+          return "d";
+        case WEEKS:
+          return "w";
+        default:
+          assert( false );
+      }
+    }
+  }
 }
