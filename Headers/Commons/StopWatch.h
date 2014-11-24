@@ -50,6 +50,12 @@ namespace Commons
       return toString( d, choice( d, SECONDS ) );
     }
 
+    /**
+     *  Converts duration to string using specified Unit
+     *  @param d the duration to convert
+     *  @param unit the Unit
+     *  @return text representation of duration in unit
+     */
     template< class duration >
     string toString( duration d, Unit unit )
     {
@@ -89,12 +95,20 @@ namespace Commons
     }
   }
   
+  /**
+   * An object that measures elapsed time in nanoseconds. It is useful to measure
+   * elapsed time using this class
+   */
   class StopWatch
   {
     typedef chrono::high_resolution_clock clock;
     typedef clock::duration duration;
 
   public:
+    /**
+     * Creates (but does not start) a new Stopwatch using chrono::high_resolution_clock
+     * as its time source.
+     */
     StopWatch()
     {
       reset();
@@ -119,6 +133,11 @@ namespace Commons
       elapsed = clock::duration::zero();
     }
     
+    /**
+     * Starts the stopwatch.
+     *
+     * @return this Stopwatch instance
+     */
     StopWatch & start()
     {
       assert( !isRunning() );
@@ -127,6 +146,12 @@ namespace Commons
       return *this;
     }
     
+    /**
+     * Stops the stopwatch. Future reads will return the fixed duration that had
+     * elapsed up to this point.
+     *
+     * @return this Stopwatch instance
+     */
     StopWatch & stop()
     {
       assert( isRunning() );
@@ -142,6 +167,31 @@ namespace Commons
       return isRunning() ? clock::now() - startTime + elapsed : elapsed;
     }
     
+    float elapsedTime( TimeUnit::Unit unit )
+    {
+      switch ( unit )
+      {
+        case TimeUnit::NANOSECONDS:
+          return chrono::duration_cast< chrono::nanoseconds >( elapsedTime() ).count();
+        case TimeUnit::MICROSECONDS:
+          return chrono::duration_cast< chrono::duration< float, micro > >( elapsedTime() ).count();
+        case TimeUnit::MILLISECONDS:
+          return chrono::duration_cast< chrono::duration< float, milli > >( elapsedTime() ).count();
+        case TimeUnit::SECONDS:
+          return chrono::duration_cast< chrono::duration< float > >( elapsedTime() ).count();
+        case TimeUnit::MINUTES:
+          return chrono::duration_cast< chrono::duration< float, ratio< 60, 1 > > >( elapsedTime() ).count();
+        case TimeUnit::HOURS:
+          return chrono::duration_cast< chrono::duration< float, ratio< 60 * 60, 1 > > >( elapsedTime() ).count();
+        case TimeUnit::DAYS:
+          return chrono::duration_cast< chrono::duration< float, ratio< 60 * 60 * 24, 1 > > >( elapsedTime() ).count();
+        case TimeUnit::WEEKS:
+          return chrono::duration_cast< chrono::duration< float, ratio< 60 * 60 * 24 * 7, 1 > > >( elapsedTime() ).count();
+        default:
+          assert( false );
+      }
+    }
+
     chrono::nanoseconds nanos() const
     {
       return chrono::duration_cast< chrono::nanoseconds >( elapsedTime() );

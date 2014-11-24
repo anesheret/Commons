@@ -16,7 +16,6 @@
 using namespace std;
 using Commons::StopWatch;
 
-
 void t()
 {
   Commons::StopWatch total;
@@ -46,6 +45,7 @@ using namespace Commons::TimeUnit;
 
 int main( int argc, const char * argv[] )
 {
+  t();
   std::cout << Commons::TimeUnit::toString(chrono::seconds( 60 + 30 ), Commons::TimeUnit::MINUTES ) << endl;
   std::cout << chrono::milliseconds( (60 + 30 + 3) * 1000 + 44) << endl;
   t();
@@ -54,6 +54,11 @@ int main( int argc, const char * argv[] )
   std::this_thread::sleep_for( chrono::milliseconds( 1515 ) );
   s.stop();
   cout << "total: " << std::fixed << setprecision(3) << s.elapsedTime().count() << " nano."<< endl;
+  cout << "total: " << s.msec().count() << " msec." << endl;
+  cout << "total: " << s.elapsedTime( Commons::TimeUnit::MILLISECONDS ) << " msec." << endl;
+  cout << "total: " << s.elapsedTime( Commons::TimeUnit::SECONDS ) << " sec." << endl;
+  cout << "total: " << s.elapsedTime( Commons::TimeUnit::MINUTES ) << " min." << endl;
+
   cout << "     : " << s << ", " << s + s << endl;
   return 0;
 }
